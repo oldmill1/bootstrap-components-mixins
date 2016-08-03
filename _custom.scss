@@ -1,0 +1,75 @@
+@mixin make-navbar() {
+  position: relative;
+  padding: $navbar-padding-y $navbar-padding-x;
+  @include clearfix;
+
+  @include media-breakpoint-up(sm) {
+    @include border-radius($navbar-border-radius);
+  }
+}
+
+@mixin make-nav() {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+@mixin make-navlink() {
+  display: inline-block;
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+
+  // Disabled state lightens text and removes hover/tab effects
+  &.disabled {
+    color: $nav-disabled-link-color;
+
+    @include plain-hover-focus {
+      color: $nav-disabled-link-hover-color;
+      cursor: $cursor-disabled;
+      background-color: $nav-disabled-link-hover-bg;
+    }
+  }
+}
+
+@mixin make-navitem() {
+  float: left;
+}
+
+@mixin make-card() {
+  position: relative;
+  display: block;
+  margin-bottom: $card-spacer-y;
+  background-color: $card-bg;
+  // border: $card-border-width solid $card-border-color;
+  @include border-radius($card-border-radius);
+  border: $card-border-width solid $card-border-color;
+}
+
+@mixin make-table() {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $spacer;
+
+  th,
+  td {
+    padding: $table-cell-padding;
+    vertical-align: top;
+    border-top: $table-border-width solid $table-border-color;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  tbody + tbody {
+    border-top: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  .table {
+    background-color: $body-bg;
+  }
+}
+
